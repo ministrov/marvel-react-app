@@ -19,6 +19,7 @@ class CharList extends Component {
     }
 
     onCharListLoaded = (charList) => {
+        console.log('update');
         this.setState({
             charList,
             loading: false
@@ -26,6 +27,7 @@ class CharList extends Component {
     }
 
     onError = () => {
+        console.log('error');
         this.setState({
             error: true,
             loading: false
