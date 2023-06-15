@@ -5,7 +5,7 @@ import ErrorMessage from '../errorMessage/ErrorMessage';
 import MarvelService from '../../services/MarvelService';
 import PropTypes from 'prop-types';
 
-const CharList = () => {
+const CharList = (props) => {
     const [charList, setCharList] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
@@ -17,13 +17,14 @@ const CharList = () => {
 
     useEffect(() => {
         onRequest();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const onRequest = (offset) => {
         onCharListLoading();
         marvelService.getAllCharacters(offset)
             .then(onCharListLoaded)
-            .catch(this.onError)
+            .catch(onError)
     }
 
     const onCharListLoading = () => {
@@ -74,13 +75,13 @@ const CharList = () => {
                     ref={el => itemRefs.current[i] = el}
                     key={item.id}
                     onClick={() => {
-                        this.props.onCharSelected(item.id);
-                        this.focusOnItem(i);
+                        props.onCharSelected(item.id);
+                        focusOnItem(i);
                     }}
-                    onKeyPress={(e) => {
+                    onKeyUp={e => {
                         if (e.key === ' ' || e.key === "Enter") {
-                            this.props.onCharSelected(item.id);
-                            this.focusOnItem(i);
+                            props.onCharSelected(item.id);
+                            focusOnItem(i);
                         }
                     }}
                 >
@@ -97,8 +98,7 @@ const CharList = () => {
         )
     }
 
-    const { charList, loading, error, newItemLoading, offset, charEnded } = this.state;
-    const items = this.renderItems(charList);
+    const items = renderItems(charList);
     const errorMessage = error ? <ErrorMessage /> : null;
     const spinner = loading ? <Spinner /> : null;
     const content = !(loading || error) ? items : null;
@@ -112,7 +112,7 @@ const CharList = () => {
                 className="button button__main button__long"
                 disabled={newItemLoading}
                 style={{ 'display': charEnded ? 'none' : 'block' }}
-                onClick={() => this.onRequest(offset)}
+                onClick={() => onRequest(offset)}
             >
                 <div className="inner">load more</div>
             </button>
