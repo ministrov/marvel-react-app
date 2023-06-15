@@ -7,7 +7,7 @@ import ErrorMessage from '../errorMessage/ErrorMessage';
 import MarvelService from '../../services/MarvelService';
 
 const RandomChar = (props) => {
-    const [char, setChar] = useState({});
+    const [char, setChar] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
 
@@ -15,11 +15,17 @@ const RandomChar = (props) => {
 
     useEffect(() => {
         updateChar();
-    });
+
+        const timerId = setInterval(updateChar, 60000);
+
+        return () => {
+            clearInterval(timerId);
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const onCharLoaded = (char) => {
         setChar(char);
-        setLoading(false);
     }
 
     const onCharLoading = () => {
@@ -42,11 +48,10 @@ const RandomChar = (props) => {
 
     const errorMessage = error ? <ErrorMessage /> : null;
     const spinner = loading ? <Spinner /> : null;
-    const content = !(loading || error) ? <View char={char} /> : null;
+    const content = !(loading || error || !char) ? <View char={char} /> : null;
 
     return (
         <div className="randomchar">
-            {/* { loading ? <Spinner/> : <View char={char}/>} */}
             {errorMessage}
             {spinner}
             {content}
@@ -67,29 +72,26 @@ const RandomChar = (props) => {
     )
 }
 
-const View = ({char}) => {
-
-    const { name, description, thumbnail, homepage, wiki} = char;
-
-    let imgStyle = { 'objectFit': 'cover'};
-
-    if (char.thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
-        imgStyle = { 'objectFit': 'unset'};
+const View = ({ char }) => {
+    const { name, description, thumbnail, homepage, wiki } = char;
+    let imgStyle = { 'objectFit': 'cover' };
+    if (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
+        imgStyle = { 'objectFit': 'contain' };
     }
 
     return (
         <div className="randomchar__block">
-            <img style={imgStyle} src={ thumbnail } alt="Random character" className="randomchar__img"/>
+            <img src={thumbnail} alt="Random character" className="randomchar__img" style={imgStyle} />
             <div className="randomchar__info">
                 <p className="randomchar__name">{name}</p>
                 <p className="randomchar__descr">
-                    { description }
+                    {description}
                 </p>
                 <div className="randomchar__btns">
-                    <a href={ homepage } className="button button__main">
+                    <a href={homepage} className="button button__main">
                         <div className="inner">homepage</div>
                     </a>
-                    <a href={ wiki } className="button button__secondary">
+                    <a href={wiki} className="button button__secondary">
                         <div className="inner">Wiki</div>
                     </a>
                 </div>
