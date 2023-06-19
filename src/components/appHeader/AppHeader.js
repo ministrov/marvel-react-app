@@ -4,16 +4,13 @@ import './appHeader.scss';
 const AppHeader = () => {
     return (
         <header className="app__header">
-            <h1 className="app__title">
-                <Link to="/">
-                    <span>Marvel</span> information portal
-                </Link>
-            </h1>
+            <Link className="app__title" to="/">
+                <span>Marvel</span> information portal
+            </Link>
             <nav className="app__menu">
                 <ul>
                     <li>
                         <NavLink
-                            exact
                             style={({ isActive }) => ({ color: isActive ? '#9f0016' : 'inherit' })} to="/"
                         >
                             Characters
