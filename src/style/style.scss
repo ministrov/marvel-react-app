@@ -58,11 +58,26 @@ input::-webkit-inner-spin-button {
         right: -174px;
         bottom: -70px;
         z-index: -1;
+
+        @media (max-width: 1485px) {
+            right: 0;
+            bottom: -288px;
+        }
+
+        @media (max-width: 612px) {
+            display: none;
+        }
     }
 
     @media (max-width: 1130px) {
         padding-left: 3rem;
         padding-right: 3rem;
+    }
+
+    @media (max-width: 540px) {
+        padding-top: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 }
 
