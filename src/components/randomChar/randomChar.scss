@@ -9,7 +9,7 @@
         padding: 3rem 2rem;
         display: grid;
         grid-template-columns: 180px auto;
-        column-gap: 30px;
+        gap: 2rem;
 
         @media (max-width: 540px) {
             grid-template-columns: 1fr;
@@ -26,7 +26,7 @@
     &__info {
         display: grid;
         grid-template-rows: minmax(29px, auto) 90px 38px;
-        row-gap: 10px;
+        gap: 10px 0;
         padding-top: 3px;
     }
     &__name {
