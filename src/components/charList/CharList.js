@@ -1,10 +1,10 @@
-import './charList.scss';
 import { useState, useEffect, useRef } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import useMarvelService from '../../services/MarvelService';
 import PropTypes from 'prop-types';
+import './charList.scss';
 
 const CharList = (props) => {
     const [charList, setCharList] = useState([]);
@@ -35,7 +35,7 @@ const CharList = (props) => {
         setCharList(charList => [...charList, ...newCharList]);
         setNewItemLoading(false);
         setOffset(offset => offset + 9);
-        setCharEnded(charEnded => ended);
+        setCharEnded(_charEnded => ended);
     }
 
     const itemRefs = useRef([]);
@@ -62,7 +62,7 @@ const CharList = (props) => {
                         className='char__item'
                         tabIndex={0}
                         ref={el => itemRefs.current[i] = el}
-                        key={i}
+                        index={i}
                         onClick={() => {
                             props.onCharSelected(item.id);
                             focusOnItem(i);

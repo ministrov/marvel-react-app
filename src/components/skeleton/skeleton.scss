@@ -2,8 +2,12 @@
     &__header {
         display: grid;
         grid-template-columns: 40px auto;
-        column-gap: 10px;
+        gap: 1rem;
         align-items: center;
+
+        @media (max-width: 540px) {
+            grid-template-columns: 100%;
+        }
     }
     &__circle {
         width: 40px;

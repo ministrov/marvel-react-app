@@ -4,17 +4,27 @@
     &__banner {
         width: 100%;
         background-color: $dark;
-        height: 100px;
-        padding: 0 25px 0 45px;
+        padding: 0 2rem 0 3rem;
         display: grid;
-        grid-template-columns: 152px auto 133px;
+        grid-template-columns: 10rem auto 9rem;
+        align-items: center;
         &-text {
             font-weight: bold;
             font-size: 24px;
             line-height: 32px;
             color: #FFFFFF;
-            padding-left: 83px;
-            padding-top: 18px;
+
+            @media (max-width: 924px) {
+                padding-top: 0;
+                padding-left: 0;
+            }
+        }
+
+        @media (max-width: 788px) {
+            grid-template-columns: 1fr;
+            justify-items: center;
+            gap: 2rem;
+            padding: 2rem;
         }
     }
 }

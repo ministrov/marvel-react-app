@@ -4,8 +4,7 @@ import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 import useMarvelService from '../../services/MarvelService';
 import ErrorMessage from '../errorMessage/ErrorMessage';
-
-import "./charSearchForm.scss";
+import './charSearchForm.scss';
 
 const CharSearchForm = () => {
   const [char, setChar] = useState(null);
@@ -23,7 +22,7 @@ const CharSearchForm = () => {
       .then(onCharLoaded);
   }
 
-  const errorMessage = error ? <div className="char__search-critical-error"><ErrorMessage/></div> : null;
+  const errorMessage = error ? <ErrorMessage><div className="char__search-critical-error"></div></ErrorMessage> : null;
   const results = !char ? null : char.length > 0 ?
       <div className="char__search-wrapper">
         <div className="char__search-success">There is! Visit {char[0].name} page?</div>
