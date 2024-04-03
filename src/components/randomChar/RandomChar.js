@@ -1,6 +1,4 @@
-/* eslint-disable no-useless-constructor */
-import { useState, useEffect } from 'react';
-// import { useId } from 'react-id-generator';
+import { useState, useEffect, useCallback } from 'react';
 import mjolnir from '../../resources/img/mjolnir.png';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
@@ -10,7 +8,6 @@ import './randomChar.scss';
 const RandomChar = () => {
     const [char, setChar] = useState(null);
     const {loading, error, getCharacter, clearError} = useMarvelService();
-    // const [id] = useId();
 
     useEffect(() => {
         updateChar();
@@ -20,19 +17,20 @@ const RandomChar = () => {
         return () => {
             clearInterval(timerId);
         }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+
+    // eslint-disable-next-line no-use-before-define
+    }, [updateChar]);
 
     const onCharLoaded = (char) => {
         setChar(char);
     }
 
-    const updateChar = () => {
+    const updateChar = useCallback(() => {
         clearError();
         const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
         getCharacter(id)
             .then(onCharLoaded)
-    }
+    }, [clearError, getCharacter])
 
     const errorMessage = error ? <ErrorMessage /> : null;
     const spinner = loading ? <Spinner /> : null;

@@ -19,6 +19,9 @@ const CharInfo = (props) => {
     const updateChar = () => {
         const { charId } = props;
 
+        console.log(charId);
+        console.log(typeof charId);
+
         if (!charId) {
             return;
         }

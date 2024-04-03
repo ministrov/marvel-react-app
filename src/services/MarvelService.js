@@ -1,4 +1,5 @@
 import { useHttp } from "../hooks/http.hook";
+import nextId  from "react-id-generator";
 
 const useMarvelService = () => {
   const {loading, request, error, clearError} = useHttp();
@@ -9,6 +10,7 @@ const useMarvelService = () => {
 
   const getAllCharacters = async (offset = _BaseOffset) => {
     const res = await request(`${_apiBase}characters?limit=9&offset=${offset}&${_apiKey}`);
+    console.log(res);
     return res.data.results.map(_transformCharacter);
   }
 
@@ -35,8 +37,13 @@ const useMarvelService = () => {
   }
 
   const _transformCharacter = (character) => {
+    const uniqeId = parseInt(nextId(character.id));
+
+    console.log(uniqeId);
+
     return {
-      id: character.id,
+      // id:  character.id,
+      id:  uniqeId,
       name: character.name,
       description: character.description ? `${character.description.slice(0, 210)}...` : 'There is no description for this character',
       thumbnail: character.thumbnail.path + '.' + character.thumbnail.extension,
