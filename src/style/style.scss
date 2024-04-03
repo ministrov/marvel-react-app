@@ -49,7 +49,7 @@ input::-webkit-inner-spin-button {
 
 .app {
     width: 100%;
-    max-width: 70rem;
+    max-width: 1440px;
     margin: 0 auto;
     padding: 4rem 0 4rem 0;
     position: relative;
@@ -59,17 +59,22 @@ input::-webkit-inner-spin-button {
         bottom: -70px;
         z-index: -1;
 
-        @media (max-width: 1485px) {
+        @media (max-width: 1835px) {
             right: 0;
             bottom: -288px;
         }
+
+        // @media (max-width: 1485px) {
+        //     right: 0;
+        //     bottom: -288px;
+        // }
 
         @media (max-width: 612px) {
             display: none;
         }
     }
 
-    @media (max-width: 1130px) {
+    @media (max-width: 1830px) {
         padding-left: 3rem;
         padding-right: 3rem;
     }
