@@ -1,4 +1,5 @@
 import { useHttp } from "../hooks/http.hook";
+import nextId  from "react-id-generator";
 
 const useMarvelService = () => {
   const {loading, request, error, clearError} = useHttp();
@@ -35,8 +36,11 @@ const useMarvelService = () => {
   }
 
   const _transformCharacter = (character) => {
+    const uniqeId = parseInt(nextId(character.id));
+
     return {
-      id: character.id,
+      id:  character.id,
+      uniqeId: uniqeId,
       name: character.name,
       description: character.description ? `${character.description.slice(0, 210)}...` : 'There is no description for this character',
       thumbnail: character.thumbnail.path + '.' + character.thumbnail.extension,
@@ -47,8 +51,11 @@ const useMarvelService = () => {
   }
 
   const _transformComics = (comics) => {
+    const uniqeId = parseInt(nextId(comics.id));
+
     return {
       id: comics.id,
+      uniqeId: uniqeId,
       title: comics.title,
       description: comics.description || "There is no description",
       pageCount: comics.pageCount
