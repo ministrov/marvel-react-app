@@ -1,4 +1,4 @@
-@import '../../../style/variables.scss';
+@import "../../../style/variables.scss";
 
 .single-comic {
     display: grid;
@@ -6,19 +6,22 @@
     gap: 0 50px;
     align-items: start;
     margin-top: 3rem;
+
     &__char-img {
         width: 293px;
         height: 293px;
 
         @media (max-width: 450px) {
             width: 100%;
-       }
+        }
     }
+
     &__name {
         font-weight: bold;
         font-size: 22px;
         line-height: 29px;
     }
+
     &__descr {
         font-size: 18px;
         line-height: 24px;
@@ -28,6 +31,6 @@
     @media (max-width: 1145px) {
         grid-template-columns: 1fr;
         justify-items: center;
-        gap: 3rem
+        gap: 3rem;
     }
 }

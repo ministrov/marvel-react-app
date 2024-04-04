@@ -1,6 +1,6 @@
-@import './variables';
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
-@import './button';
+@import "./variables";
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap");
+@import "./button";
 
 * {
     font-family: "Roboto Condensed", sans-serif;
@@ -30,6 +30,7 @@ a {
     text-decoration: none;
     color: inherit;
     display: inline-block;
+
     &:hover {
         text-decoration: none;
         color: inherit;
@@ -44,7 +45,7 @@ p {
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
-    margin: 0; 
+    margin: 0;
 }
 
 .app {
@@ -53,6 +54,7 @@ input::-webkit-inner-spin-button {
     margin: 0 auto;
     padding: 4rem 0 4rem 0;
     position: relative;
+
     .bg-decoration {
         position: absolute;
         right: -174px;
@@ -63,11 +65,6 @@ input::-webkit-inner-spin-button {
             right: 0;
             bottom: -288px;
         }
-
-        // @media (max-width: 1485px) {
-        //     right: 0;
-        //     bottom: -288px;
-        // }
 
         @media (max-width: 612px) {
             display: none;
@@ -92,17 +89,19 @@ main {
 }
 
 .pulse {
-    animation: pulse 1.5s ease-in-out .5s infinite
+    animation: pulse 1.5s ease-in-out 0.5s infinite;
 }
 
 @keyframes pulse {
     0% {
-        opacity: 1
+        opacity: 1;
     }
+
     50% {
-        opacity: .4
+        opacity: 0.4;
     }
+
     100% {
-        opacity: 1
+        opacity: 1;
     }
 }
