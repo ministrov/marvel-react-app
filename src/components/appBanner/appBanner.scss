@@ -1,4 +1,4 @@
-@import '../../style/variables.scss';
+@import "../../style/variables.scss";
 
 .app {
     &__banner {
@@ -8,11 +8,12 @@
         display: grid;
         grid-template-columns: 10rem auto 9rem;
         align-items: center;
+
         &-text {
             font-weight: bold;
             font-size: 24px;
             line-height: 32px;
-            color: #FFFFFF;
+            color: #ffffff;
 
             @media (max-width: 924px) {
                 padding-top: 0;

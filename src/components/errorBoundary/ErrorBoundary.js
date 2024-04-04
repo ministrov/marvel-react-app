@@ -15,7 +15,6 @@ class ErrorBoundary extends Component {
 
   render() {
     if (this.state.error) {
-      // return <h2>Sorry something have gone wrong!!!</h2>
       return <ErrorMessage />
     }
 
@@ -24,3 +23,26 @@ class ErrorBoundary extends Component {
 }
 
 export default ErrorBoundary;
+
+
+// import React, { useState } from "react";
+// import ErrorMessage from "../errorMessage/ErrorMessage";
+
+// const ErrorBoundary = ({ children }) => {
+//   const [error, setError] = useState(false);
+
+//   const componentDidCatch = (error, errorInfo) => {
+//     console.log(error, errorInfo);
+//     setError(true);
+//   };
+
+//   componentDidCatch();
+
+//   if (error) {
+//     return <ErrorMessage />;
+//   }
+
+//   return children;
+// };
+
+// export default ErrorBoundary;
