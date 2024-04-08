@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { CSSTransition, TransitionGroup, Transition } from "react-transition-group";
 import Spinner from "../spinner/Spinner";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import useMarvelService from "../../services/MarvelService";
@@ -68,7 +68,6 @@ const CharList = (props) => {
             className="char__item"
             tabIndex={0}
             ref={(el) => (itemRefs.current[i] = el)}
-            // index={i}
             onClick={() => {
               props.onCharSelected(item.id);
               focusOnItem(i);
@@ -89,7 +88,9 @@ const CharList = (props) => {
 
     return (
       <TransitionGroup component={null}>
-        <ul className="char__grid">{items}</ul>
+        <Transition timeout={500}>
+          <ul className="char__grid">{items}</ul>
+        </Transition>
       </TransitionGroup>
     );
   }
