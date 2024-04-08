@@ -8,8 +8,8 @@ const AppHeader = () => {
         <span>Marvel</span> information portal
       </Link>
       <nav className="app__menu">
-        <ul>
-          <li>
+        <ul className="app__list">
+          <li className="app__item">
             <NavLink
               style={({ isActive }) => ({
                 color: isActive ? "#9f0016" : "inherit",
@@ -20,7 +20,7 @@ const AppHeader = () => {
             </NavLink>
           </li>
           /
-          <li>
+          <li className="app__item">
             <NavLink
               style={({ isActive }) => ({
                 color: isActive ? "#9f0016" : "inherit",
