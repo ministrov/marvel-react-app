@@ -19,11 +19,15 @@
         gap: 1rem;
 
         @media (max-width: 1830px) {
-            grid-template-columns: repeat(2, auto);
+            grid-template-columns: repeat(3, auto);
+        }
+
+        @media (max-width: 1284px) {
+            grid-template-columns: repeat(2, minmax(234px, 317px));
         }
 
         @media (max-width: 612px) {
-            grid-template-columns: 1fr;
+            grid-template-columns: auto;
             justify-items: center;
         }
     }
