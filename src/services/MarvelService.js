@@ -40,8 +40,6 @@ const useMarvelService = () => {
   const _transformCharacter = (character) => {
     const uniqeId = parseInt(nextId(character.id));
 
-    console.log(uniqeId);
-
     return {
       id: character.id,
       uniqeId: uniqeId,
@@ -69,7 +67,6 @@ const useMarvelService = () => {
         : "No information about the number of pages",
       thumbnail: comics.thumbnail.path + "." + comics.thumbnail.extension,
       language: comics.textObjects[0]?.language || "en-us",
-      // optional chaining operator
       price: comics.prices[0].price
         ? `${comics.prices[0].price}$`
         : "not available",
