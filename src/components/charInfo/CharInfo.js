@@ -12,25 +12,27 @@ const CharInfo = (props) => {
   const { loading, error, getCharacter, clearError } = useMarvelService();
 
   useEffect(() => {
+    const updateChar = () => {
+      const { charId } = props;
+
+      if (!charId) {
+        return;
+      }
+
+      clearError();
+
+      getCharacter(charId).then(onCharLoaded);
+    };
+
+    const onCharLoaded = (char) => {
+      setChar(char);
+    };
+    
     updateChar();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.charId]);
 
-  const updateChar = () => {
-    const { charId } = props;
+  }, [props.charId, clearError, getCharacter, props]);
 
-    if (!charId) {
-      return;
-    }
 
-    clearError();
-
-    getCharacter(charId).then(onCharLoaded);
-  };
-
-  const onCharLoaded = (char) => {
-    setChar(char);
-  };
 
   const skeleton = char || loading || error ? null : <Skeleton />;
   const errorMessage = error ? <ErrorMessage /> : null;
