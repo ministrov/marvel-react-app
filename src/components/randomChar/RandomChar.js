@@ -18,18 +18,18 @@ const RandomChar = () => {
       clearInterval(timerId);
     };
 
-    // eslint-disable-next-line no-use-before-define
+  // eslint-disable-next-line no-use-before-define
   }, [updateChar]);
-
-  const onCharLoaded = (char) => {
-    setChar(char);
-  };
 
   const updateChar = useCallback(() => {
     clearError();
     const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
     getCharacter(id).then(onCharLoaded);
   }, [clearError, getCharacter]);
+
+  const onCharLoaded = (char) => {
+    setChar(char);
+  };
 
   const errorMessage = error ? <ErrorMessage /> : null;
   const spinner = loading ? <Spinner /> : null;
