@@ -19,9 +19,6 @@ const CharInfo = (props) => {
   const updateChar = () => {
     const { charId } = props;
 
-    console.log(charId);
-    console.log(typeof charId);
-
     if (!charId) {
       return;
     }
@@ -29,8 +26,6 @@ const CharInfo = (props) => {
     clearError();
 
     getCharacter(charId).then(onCharLoaded);
-
-    // this.foo.bar = 0;
   };
 
   const onCharLoaded = (char) => {

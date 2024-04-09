@@ -10,11 +10,7 @@ import CharSearchForm from "../charSearchForm/CharSearchForm";
 const MainPage = () => {
   const [selectedChar, setChar] = useState(null);
 
-  console.log(selectedChar);
-
   const onCharSelected = (id) => {
-    console.log(id);
-    console.log(typeof id);
     setChar(id);
   };
 

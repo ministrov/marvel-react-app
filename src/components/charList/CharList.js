@@ -27,8 +27,6 @@ const CharList = (props) => {
   const onCharListLoaded = (newCharList) => {
     let ended = false;
 
-    console.log(newCharList);
-
     if (newCharList.length < 9) {
       ended = true;
     }
