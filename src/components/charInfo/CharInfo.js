@@ -11,11 +11,6 @@ const CharInfo = (props) => {
 
   const { loading, error, getCharacter, clearError } = useMarvelService();
 
-  useEffect(() => {
-    updateChar();
-
-  }, [props.charId]);
-
   const updateChar = useCallback(() => {
     const { charId } = props;
 
@@ -28,11 +23,14 @@ const CharInfo = (props) => {
     getCharacter(charId).then(onCharLoaded);
   }, [clearError, getCharacter, props]);
 
+  useEffect(() => {
+    updateChar();
+
+  }, [props.charId]);
+
   const onCharLoaded = (char) => {
     setChar(char);
   };
-
-
 
   const skeleton = char || loading || error ? null : <Skeleton />;
   const errorMessage = error ? <ErrorMessage /> : null;
