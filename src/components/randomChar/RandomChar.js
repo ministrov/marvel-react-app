@@ -18,7 +18,6 @@ const RandomChar = () => {
       clearInterval(timerId);
     };
 
-  // eslint-disable-next-line no-use-before-define
   }, [updateChar]);
 
   const updateChar = useCallback(() => {
