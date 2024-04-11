@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import useMarvelService from "../../services/MarvelService";
 import Spinner from "../spinner/Spinner";
@@ -12,25 +12,25 @@ const CharInfo = (props) => {
   const { loading, error, getCharacter, clearError } = useMarvelService();
 
   useEffect(() => {
-    const updateChar = () => {
-      const { charId } = props;
-
-      if (!charId) {
-        return;
-      }
-
-      clearError();
-
-      getCharacter(charId).then(onCharLoaded);
-    };
-
-    const onCharLoaded = (char) => {
-      setChar(char);
-    };
-    
     updateChar();
+  // eslint-disable-next-line no-use-before-define
+  }, [props.charId, updateChar]);
 
-  }, [props.charId, clearError, getCharacter, props]);
+  const updateChar = useCallback(() => {
+    const { charId } = props;
+
+    if (!charId) {
+      return;
+    }
+
+    clearError();
+
+    getCharacter(charId).then(onCharLoaded);
+  }, [clearError, getCharacter, props]);
+
+  const onCharLoaded = (char) => {
+    setChar(char);
+  };
 
 
 
