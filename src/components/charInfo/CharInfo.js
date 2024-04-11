@@ -13,8 +13,8 @@ const CharInfo = (props) => {
 
   useEffect(() => {
     updateChar();
-  // eslint-disable-next-line no-use-before-define
-  }, [props.charId, updateChar]);
+
+  }, [props.charId]);
 
   const updateChar = useCallback(() => {
     const { charId } = props;
